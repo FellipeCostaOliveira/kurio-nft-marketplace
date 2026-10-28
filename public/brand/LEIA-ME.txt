@@ -1,0 +1,4 @@
+Ícones oficiais dos provedores de login:
+  google.svg   -> "G" do pacote oficial "Sign in with Google" (signin-assets.zip)
+  facebook.png -> logo "f" oficial do Facebook
+O componente aceita .svg ou .png. Sem o arquivo, o botão mostra um ícone neutro.

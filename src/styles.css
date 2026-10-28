@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/roboto-mono/wght.css';
+
+/* Tokens extraídos do Figma Kurio (tema escuro único). Variáveis no padrão shadcn/ui. */
+:root {
+  --background: #140d0a;
+  --foreground: #f4e9dd;
+  --surface: #241612;
+  --surface-2: #2e1d17;
+  --band: #38220f;
+  --card: #241612;
+  --card-foreground: #f4e9dd;
+  --popover: #241612;
+  --popover-foreground: #f4e9dd;
+  --primary: #d28a4c;
+  --primary-hover: #e09a5c;
+  --primary-foreground: #1a0f0a;
+  --secondary: #3a2618;
+  --secondary-foreground: #f4e9dd;
+  --muted: #2e1d17;
+  --muted-foreground: #c2ab96;
+  --accent: #553722;
+  --accent-foreground: #f2b27a;
+  --link: #e8a265;
+  --destructive: #ff8a70;
+  --success: #8fd19e;
+  --border: #4a3226;
+  --input: #3f2a20;
+  --ring: #f0b27a;
+  --radius: 0.375rem;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Roboto Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: 'Roboto Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-band: var(--band);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-link: var(--link);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  img {
+    max-width: 100%;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+/* Skeleton com shimmer — desativado com prefers-reduced-motion */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #2e1d17;
+  border-radius: var(--radius);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(242, 178, 122, 0.1), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .skeleton::after {
+    animation: none;
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Remove setas de input number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
